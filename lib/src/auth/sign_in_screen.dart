@@ -31,10 +31,17 @@ class SignInScreen extends StatelessWidget {
               child: Column(
                 children: const [
                   // email
-                  CustomTextField(),
+                  CustomTextField(
+                    icon: Icons.email,
+                    label: 'Email',
+                  ),
 
                   // senha
-                  CustomTextField(),
+                  CustomTextField(
+                    icon: Icons.lock,
+                    label: "Senha",
+                    isObscure: true,
+                  ),
                 ],
               ),
             ),

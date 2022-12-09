@@ -29,7 +29,7 @@ class SignInScreen extends StatelessWidget {
                 ),
               ),
               child: Column(
-                children: const [
+                children: [
                   // email
                   CustomTextField(
                     icon: Icons.email,
@@ -40,7 +40,7 @@ class SignInScreen extends StatelessWidget {
                   CustomTextField(
                     icon: Icons.lock,
                     label: "Senha",
-                    isObscure: true,
+                    isSecret: true,
                   ),
                 ],
               ),

@@ -9,7 +9,7 @@ class SignUpScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: CustomColors.customSwatchColor,
       body: Column(
-        children:  [
+        children: [
           const Expanded(
             child: Center(
               child: Text(
@@ -23,7 +23,18 @@ class SignUpScreen extends StatelessWidget {
           ),
 
           // Formulário
-          Container(),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 32,
+              vertical: 40,
+            ),
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(45),
+              ),
+            ),
+          ),
         ],
       ),
     );

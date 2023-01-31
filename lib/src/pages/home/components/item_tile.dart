@@ -22,7 +22,9 @@ class ItemTile extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (c) {
-              return ProductScreen(item: item,);
+              return ProductScreen(
+                item: item,
+              );
             }));
           },
           child: Card(
@@ -37,7 +39,12 @@ class ItemTile extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   //Imagem
-                  Expanded(child: Image.asset(item.imgUrl)),
+                  Expanded(
+                    child: Hero(
+                      tag: item.imgUrl,
+                      child: Image.asset(item.imgUrl),
+                    ),
+                  ),
 
                   //Nome
                   Text(

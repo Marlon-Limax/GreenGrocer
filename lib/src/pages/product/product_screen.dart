@@ -4,11 +4,19 @@ import 'package:greengrocer/src/models/item_model.dart';
 import 'package:greengrocer/src/pages/common_widgets/quantity_widget.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
-class ProductScreen extends StatelessWidget {
-  ProductScreen({super.key, required this.item});
+class ProductScreen extends StatefulWidget {
+  const ProductScreen({super.key, required this.item});
 
   final ItemModel item;
+
+  @override
+  State<ProductScreen> createState() => _ProductScreenState();
+}
+
+class _ProductScreenState extends State<ProductScreen> {
   final UtilsServices utilsServices = UtilsServices();
+
+  int carItemQuantity = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +29,8 @@ class ProductScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: Hero(
-                  tag: item.imgUrl,
-                  child: Image.asset(item.imgUrl),
+                  tag: widget.item.imgUrl,
+                  child: Image.asset(widget.item.imgUrl),
                 ),
               ),
               Expanded(
@@ -49,7 +57,7 @@ class ProductScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Text(
-                              item.itemName,
+                              widget.item.itemName,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -58,13 +66,21 @@ class ProductScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const QuantityWidget(),
+                          QuantityWidget(
+                            suffixText: widget.item.unit,
+                            value: carItemQuantity,
+                            result: (quantity) {
+                              setState(() {
+                                carItemQuantity = quantity;
+                              });
+                            },
+                          ),
                         ],
                       ),
 
                       // Preço
                       Text(
-                        utilsServices.priceToCurrency(item.price),
+                        utilsServices.priceToCurrency(widget.item.price),
                         style: TextStyle(
                           fontSize: 23,
                           fontWeight: FontWeight.bold,
@@ -78,7 +94,7 @@ class ProductScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(vertical: 10),
                           child: SingleChildScrollView(
                             child: Text(
-                              item.description,
+                              widget.item.description,
                               style: const TextStyle(
                                 height: 1.5,
                               ),

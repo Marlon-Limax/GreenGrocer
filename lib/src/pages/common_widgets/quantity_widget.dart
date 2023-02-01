@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
 
 class QuantityWidget extends StatelessWidget {
-  const QuantityWidget({super.key});
+  final int value;
+  final String suffixText;
+  final Function(int quantity) result;
+
+  const QuantityWidget({
+    super.key,
+    required this.value,
+    required this.suffixText,
+    required this.result,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,13 +33,17 @@ class QuantityWidget extends StatelessWidget {
           _QuantityButton(
             icon: Icons.remove,
             color: Colors.grey,
-            onPressed: () {},
+            onPressed: () {
+              if (value == 1) return;
+              int resultCount = value - 1;
+              result(resultCount);
+            },
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 6),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
             child: Text(
-              '1kg',
-              style: TextStyle(
+              '$value$suffixText',
+              style: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
@@ -39,7 +52,10 @@ class QuantityWidget extends StatelessWidget {
           _QuantityButton(
             icon: Icons.add,
             color: CustomColors.customSwatchColor,
-            onPressed: () {},
+            onPressed: () {
+              int resultCount = value + 1;
+              result(resultCount);
+            },
           ),
         ],
       ),

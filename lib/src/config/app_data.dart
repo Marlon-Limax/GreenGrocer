@@ -1,3 +1,4 @@
+import '../models/cart_item_model.dart';
 import '../models/item_model.dart';
 
 ItemModel apple = ItemModel(
@@ -65,9 +66,24 @@ List<ItemModel> items = [
 ];
 
 List<String> categories = [
-    'Frutas',
-    'Grãos',
-    'Verduras',
-    'Temperos',
-    'Cereais',
-  ];
+  'Frutas',
+  'Grãos',
+  'Verduras',
+  'Temperos',
+  'Cereais',
+];
+
+List<CartItemModel> cartItems = [
+  CartItemModel(
+    item: apple,
+    quantity: 2,
+  ),
+  CartItemModel(
+    item: grape,
+    quantity: 1,
+  ),
+  CartItemModel(
+    item: guava,
+    quantity: 3,
+  ),
+];

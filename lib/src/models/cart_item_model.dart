@@ -4,5 +4,10 @@ class CartItemModel {
   ItemModel item;
   int quantity;
 
-  CartItemModel({required this.item, required this.quantity});
+  CartItemModel({
+    required this.item,
+    required this.quantity,
+  });
+
+  totalPrice() => item.price * quantity;
 }

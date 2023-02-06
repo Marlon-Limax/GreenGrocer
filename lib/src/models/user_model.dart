@@ -1,15 +1,15 @@
 class UserModel {
   String name;
   String email;
-  String celular;
+  String phone;
   String cpf;
-  String senha;
+  String password;
 
   UserModel({
-    required this.celular,
+    required this.phone,
     required this.cpf,
     required this.email,
     required this.name,
-    required this.senha,
+    required this.password,
   });
 }

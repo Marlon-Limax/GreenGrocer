@@ -134,7 +134,7 @@ List<OrderModel> orders = [
       '2022-06-08 11:00:10.458',
     ),
     id: 'a65s4d6a2s1d6a5s',
-    status: 'delivered',
+    status: 'refunded',
     total: 11.5,
     items: [
       CartItemModel(

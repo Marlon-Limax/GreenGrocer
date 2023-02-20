@@ -28,3 +28,4 @@ class UtilsServices {
         fontSize: 14.0);
   }
 }
+
